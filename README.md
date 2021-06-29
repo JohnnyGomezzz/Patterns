@@ -1,0 +1,1 @@
+Patterns & Architecture GB course
