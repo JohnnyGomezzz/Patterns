@@ -1,22 +1,34 @@
 package ru.johnnygomezzz.pattern.prototype;
 
 public class PrototypePatternTest {
+
+    public static void buyLootboxes(int money) throws CloneNotSupportedException {
+        int gemTotalQuantity = 0;
+
+        while(money >= 0) {
+            Lootbox bronzeBox = new BronzeBox();
+            Lootbox nextBronzeBox = bronzeBox.clone();
+            System.out.println(nextBronzeBox.getGemQuantity());
+            money -= nextBronzeBox.getPrice();
+            gemTotalQuantity += nextBronzeBox.getGemQuantity();
+
+            Lootbox silverBox = new SilverBox();
+            Lootbox nextSilverBox = silverBox.clone();
+            System.out.println(nextSilverBox.getGemQuantity());
+            money -= nextSilverBox.getPrice();
+            gemTotalQuantity += nextSilverBox.getGemQuantity();
+
+            Lootbox goldBox = new GoldBox();
+            Lootbox nextGoldBox = goldBox.clone();
+            System.out.println(nextGoldBox.getGemQuantity());
+            money -= nextGoldBox.getPrice();
+            gemTotalQuantity += nextGoldBox.getGemQuantity();
+        }
+        System.out.println(gemTotalQuantity);
+    }
+
     public static void main(String[] args) throws CloneNotSupportedException {
+        buyLootboxes(1500);
 
-        Smartphone note10 = new Samsung("Note10");
-        Smartphone iphoneX = new Apple("iPhoneX");
-
-        System.out.println(note10);
-        System.out.println(iphoneX);
-
-        System.out.println("=== Products for VIPs ===");
-
-        Smartphone note10Gold = note10.clone();
-        note10Gold.setAdditionalPrice(50);
-        System.out.println(note10Gold);
-
-        Smartphone iphoneX128 = iphoneX.clone();
-        iphoneX128.setAdditionalPrice(100);
-        System.out.println(iphoneX128);
     }
 }
